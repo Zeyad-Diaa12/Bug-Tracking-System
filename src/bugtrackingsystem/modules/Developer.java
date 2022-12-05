@@ -9,11 +9,9 @@ package bugtrackingsystem.modules;
  * @author zeyad
  */
 public class Developer extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Developer
-     */
-    public Developer() {
+    private final String name;
+    public Developer(String name) {
+        this.name = name;
         initComponents();
     }
 
@@ -28,10 +26,10 @@ public class Developer extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        welcomeMsg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Developer");
-        setPreferredSize(new java.awt.Dimension(700, 400));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
@@ -41,21 +39,33 @@ public class Developer extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Developer Panel");
 
+        welcomeMsg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        welcomeMsg.setForeground(new java.awt.Color(255, 255, 255));
+        welcomeMsg.setText("Welcome "+name);
+        welcomeMsg.setPreferredSize(new java.awt.Dimension(250, 32));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(246, 246, 246)
-                .addComponent(jLabel1)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(186, 186, 186)
+                .addContainerGap()
+                .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111)
                 .addComponent(jLabel1)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -76,5 +86,6 @@ public class Developer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel welcomeMsg;
     // End of variables declaration//GEN-END:variables
 }
