@@ -12,6 +12,8 @@ import database.*;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -121,7 +123,6 @@ public class Login1 extends javax.swing.JFrame {
 
             String idStr = this.id.getText().trim();
             String pass = this.password_.getText().trim();
-
             try {
                 if (!idStr.equals("") && !pass.equals("")) {
                     int id_ = Integer.parseInt(this.id.getText().trim());
@@ -132,40 +133,44 @@ public class Login1 extends javax.swing.JFrame {
                         if (rs.getString(3).equals(pass)) {
                             switch (rs.getString(4)) {
                                 case "admin" -> {
+                                    String name = rs.getString("name");
                                     java.awt.EventQueue.invokeLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            new Admin().setVisible(true);
+                                            new Admin(name).setVisible(true);
                                         }
                                     });
                                     this.dispose();
                                 }
 
                                 case "pm" -> {
+                                    String name = rs.getString("name");
                                     java.awt.EventQueue.invokeLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            new ProjectManager().setVisible(true);
+                                            new ProjectManager(name).setVisible(true);
                                         }
                                     });
                                     this.dispose();
                                 }
 
                                 case "developer" -> {
+                                    String name = rs.getString("name");
                                     java.awt.EventQueue.invokeLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            new Developer().setVisible(true);
+                                            new Developer(name).setVisible(true);
                                         }
                                     });
                                     this.dispose();
                                 }
 
                                 case "tester" -> {
+                                    String name = rs.getString("name");
                                     java.awt.EventQueue.invokeLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            new Tester().setVisible(true);
+                                            new Tester(name).setVisible(true);
                                         }
                                     });
                                     this.dispose();
