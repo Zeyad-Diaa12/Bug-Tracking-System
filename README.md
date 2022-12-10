@@ -22,7 +22,7 @@ Each Module is limited to the permitted operations for their role.
 
 Admin:-
 ------------------
-        - Admin can add new member, with different roles (admin,pm,developer,tester), to the system .
+        - Admin can add new member, with different roles (admin,pm,developer,tester), to the system.
 
         - Admin can update data of existing members with different roles (admin,pm,developer,tester).
 
@@ -46,7 +46,7 @@ Tester:-
 --------------
         - Tester can view all bugs from all projects.
         
-        - Tester can define a bug and assign it to a specific developer. Bug has the following attributes (BugID, BugName, priority, BugType, BugLevel, DateDiscovered, Project In Wehre the Bug is Found, Assigned Developer's ID, Testers's ID, Screenshot for the Bug)
+        - Tester can define a bug and assign it to a specific developer. Bug has the following attributes (Bug ID, Bug Name, priority, Bug Type, Bug Level, Date Discovered, Project In Wehre the Bug is Found, Assigned Developer's ID, Tester's ID, Screenshot for the Bug)
         
         - Tester can edit the status of the bug either closed or opened 
 -----------------
