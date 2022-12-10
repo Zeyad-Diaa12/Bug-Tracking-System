@@ -5,6 +5,8 @@
 package bugtrackingsystem.modules;
 
 import bugtrackingsystem.forms.Login1;
+import bugtrackingsystem.tables.Bugs;
+import bugtrackingsystem.tables.Users;
 
 /**
  *
@@ -13,9 +15,10 @@ import bugtrackingsystem.forms.Login1;
 public class Admin extends javax.swing.JFrame {
 
     private final String name;
-
-    public Admin(String name) {
+    private final int id;
+    public Admin(String name,int id) {
         this.name = name;
+        this.id=id;
         initComponents();
     }
 
@@ -32,10 +35,14 @@ public class Admin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         welcomeMsg = new javax.swing.JLabel();
         logOutBtn = new javax.swing.JButton();
+        viewBugs = new javax.swing.JButton();
+        viewUsers = new javax.swing.JButton();
+        updateUser = new javax.swing.JButton();
+        addUser = new javax.swing.JButton();
+        deleteUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin");
-        setPreferredSize(new java.awt.Dimension(700, 400));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
@@ -60,6 +67,46 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        viewBugs.setBackground(new java.awt.Color(0, 0, 153));
+        viewBugs.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        viewBugs.setForeground(new java.awt.Color(255, 255, 255));
+        viewBugs.setText("View All Bugs");
+        viewBugs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBugsActionPerformed(evt);
+            }
+        });
+
+        viewUsers.setBackground(new java.awt.Color(0, 0, 153));
+        viewUsers.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        viewUsers.setForeground(new java.awt.Color(255, 255, 255));
+        viewUsers.setText("View All Users");
+        viewUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUsersActionPerformed(evt);
+            }
+        });
+
+        updateUser.setBackground(new java.awt.Color(0, 0, 153));
+        updateUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        updateUser.setForeground(new java.awt.Color(255, 255, 255));
+        updateUser.setText("Update User");
+        updateUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateUserActionPerformed(evt);
+            }
+        });
+
+        addUser.setBackground(new java.awt.Color(0, 0, 153));
+        addUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addUser.setForeground(new java.awt.Color(255, 255, 255));
+        addUser.setText("Add User");
+
+        deleteUser.setBackground(new java.awt.Color(0, 0, 153));
+        deleteUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        deleteUser.setForeground(new java.awt.Color(255, 255, 255));
+        deleteUser.setText("Delete User");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -67,38 +114,54 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(viewUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(updateUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewBugs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                        .addComponent(addUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
                 .addComponent(logOutBtn)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(245, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(292, 292, 292))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logOutBtn))
-                .addGap(167, 167, 167)
-                .addComponent(jLabel1)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(logOutBtn))
+                    .addComponent(jLabel1))
+                .addGap(83, 83, 83)
+                .addComponent(viewBugs)
+                .addGap(18, 18, 18)
+                .addComponent(viewUsers)
+                .addGap(18, 18, 18)
+                .addComponent(addUser)
+                .addGap(18, 18, 18)
+                .addComponent(updateUser)
+                .addGap(18, 18, 18)
+                .addComponent(deleteUser)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void logOutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logOutBtnMouseClicked
@@ -111,10 +174,39 @@ public class Admin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_logOutBtnMouseClicked
 
+    private void updateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateUserActionPerformed
+
+    private void viewBugsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBugsActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Bugs(id).setVisible(true);
+            }
+        });
+        this.dispose();
+    }//GEN-LAST:event_viewBugsActionPerformed
+
+    private void viewUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUsersActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Users(id).setVisible(true);
+            }
+        });
+        this.dispose();
+    }//GEN-LAST:event_viewUsersActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addUser;
+    private javax.swing.JButton deleteUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logOutBtn;
+    private javax.swing.JButton updateUser;
+    private javax.swing.JButton viewBugs;
+    private javax.swing.JButton viewUsers;
     private javax.swing.JLabel welcomeMsg;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
 package bugtrackingsystem.modules;
 
 import bugtrackingsystem.forms.Login1;
+import bugtrackingsystem.tables.Bugs;
 
 /**
  *
@@ -13,9 +14,10 @@ import bugtrackingsystem.forms.Login1;
 public class Developer extends javax.swing.JFrame {
 
     private final String name;
-
-    public Developer(String name) {
+    private final int id;
+    public Developer(String name,int id) {
         this.name = name;
+        this.id=id;
         initComponents();
     }
 
@@ -32,17 +34,22 @@ public class Developer extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         welcomeMsg = new javax.swing.JLabel();
         logOutBtn = new javax.swing.JButton();
+        viewBugs = new javax.swing.JButton();
+        updateStatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Developer");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 400));
 
+        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Developer Panel");
+        jLabel1.setPreferredSize(new java.awt.Dimension(200, 32));
 
         welcomeMsg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         welcomeMsg.setForeground(new java.awt.Color(255, 255, 255));
@@ -59,47 +66,67 @@ public class Developer extends javax.swing.JFrame {
             }
         });
 
+        viewBugs.setBackground(new java.awt.Color(0, 0, 153));
+        viewBugs.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        viewBugs.setForeground(new java.awt.Color(255, 255, 255));
+        viewBugs.setText("View Assigned Bugs");
+        viewBugs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBugsActionPerformed(evt);
+            }
+        });
+
+        updateStatus.setBackground(new java.awt.Color(0, 0, 153));
+        updateStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        updateStatus.setForeground(new java.awt.Color(255, 255, 255));
+        updateStatus.setText("Update Status");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(jLabel1)
-                        .addGap(0, 255, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logOutBtn)))
+                .addContainerGap()
+                .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(updateStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(viewBugs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addComponent(logOutBtn)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logOutBtn))
-                .addGap(111, 111, 111)
-                .addComponent(jLabel1)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(welcomeMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(logOutBtn))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(112, 112, 112)
+                .addComponent(viewBugs)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(updateStatus)
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void logOutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logOutBtnMouseClicked
@@ -112,11 +139,23 @@ public class Developer extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_logOutBtnMouseClicked
 
+    private void viewBugsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBugsActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Bugs(id).setVisible(true);
+            }
+        });
+        this.dispose();
+    }//GEN-LAST:event_viewBugsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logOutBtn;
+    private javax.swing.JButton updateStatus;
+    private javax.swing.JButton viewBugs;
     private javax.swing.JLabel welcomeMsg;
     // End of variables declaration//GEN-END:variables
 }
