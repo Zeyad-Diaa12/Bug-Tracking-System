@@ -34,3 +34,26 @@ Admin:-
 -----------------
 Project Manager (PM):-
 --------------
+        - PM can view all bugs from all projects.
+        
+        - PM can view Developers performance.
+        
+        - PM can view Testers performance.
+        
+        - PM can edit the status of the bug either closed or opened 
+-----------------
+Tester:-
+--------------
+        - Tester can view all bugs from all projects.
+        
+        - Tester can define a bug and assign it to a specific developer. Bug has the following attributes (BugID, BugName, priority, BugType, BugLevel, DateDiscovered, Project In Wehre the Bug is Found, Assigned Developer's ID, Testers's ID, Screenshot for the Bug)
+        
+        - Tester can edit the status of the bug either closed or opened 
+-----------------
+Developer:-
+--------------
+        - Developer can view all bugs assigned to him/her.
+        
+        - Developer can edit the status of the bug either closed or opened 
+
+
