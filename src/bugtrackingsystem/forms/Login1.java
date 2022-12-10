@@ -12,8 +12,6 @@ import database.*;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -115,6 +113,7 @@ public class Login1 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
@@ -137,7 +136,7 @@ public class Login1 extends javax.swing.JFrame {
                                     java.awt.EventQueue.invokeLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            new Admin(name).setVisible(true);
+                                            new Admin(name,id_).setVisible(true);
                                         }
                                     });
                                     this.dispose();
@@ -148,7 +147,7 @@ public class Login1 extends javax.swing.JFrame {
                                     java.awt.EventQueue.invokeLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            new ProjectManager(name).setVisible(true);
+                                            new ProjectManager(name,id_).setVisible(true);
                                         }
                                     });
                                     this.dispose();
@@ -159,7 +158,7 @@ public class Login1 extends javax.swing.JFrame {
                                     java.awt.EventQueue.invokeLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            new Developer(name).setVisible(true);
+                                            new Developer(name,id_).setVisible(true);
                                         }
                                     });
                                     this.dispose();
@@ -170,7 +169,7 @@ public class Login1 extends javax.swing.JFrame {
                                     java.awt.EventQueue.invokeLater(new Runnable() {
                                         @Override
                                         public void run() {
-                                            new Tester(name).setVisible(true);
+                                            new Tester(name,id_).setVisible(true);
                                         }
                                     });
                                     this.dispose();
