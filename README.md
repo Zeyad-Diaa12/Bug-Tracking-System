@@ -19,3 +19,13 @@ This System Contains 4 Modules:
 Each Module is limited to the permitted operations for their role.
 
 ------------------
+
+Admin:-
+------------------
+Admin can add new member, with different roles (admin,pm,developer,tester), to the system .
+
+Admin can update data of existing members with different roles (admin,pm,developer,tester).
+
+Admin can delete members, with different roles (admin,pm,developer,tester), from the system.
+
+Admin can view all bugs in the project.
