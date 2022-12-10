@@ -4,7 +4,7 @@ Bug Tracking System that can be used in organizations to increase the productivi
 
 It is made using Database, the database used in it is Microsoft SQL Server 
 
-How does it work?
+How does it work?\n
 This System Contains 4 Modules
         1- Admin Module
         2- Project Manager Module
