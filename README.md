@@ -22,10 +22,15 @@ Each Module is limited to the permitted operations for their role.
 
 Admin:-
 ------------------
-Admin can add new member, with different roles (admin,pm,developer,tester), to the system .
+        - Admin can add new member, with different roles (admin,pm,developer,tester), to the system .
 
-Admin can update data of existing members with different roles (admin,pm,developer,tester).
+        - Admin can update data of existing members with different roles (admin,pm,developer,tester).
 
-Admin can delete members, with different roles (admin,pm,developer,tester), from the system.
+        - Admin can delete members, with different roles (admin,pm,developer,tester), from the system.
 
-Admin can view all bugs in the project.
+        - Admin can view all bugs from all projects.
+        
+        - Admin can view all users in the system.
+-----------------
+Project Manager (PM):-
+--------------
