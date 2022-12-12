@@ -5,6 +5,7 @@
 package bugtrackingsystem.modules;
 
 import bugtrackingsystem.forms.Login1;
+import bugtrackingsystem.forms.UpdateBugStatus;
 import bugtrackingsystem.tables.Bugs;
 import bugtrackingsystem.tables.DevPerformance;
 import bugtrackingsystem.tables.TesterPerformance;
@@ -17,9 +18,10 @@ public class ProjectManager extends javax.swing.JFrame {
 
     private final String name;
     private final int id;
-    public ProjectManager(String name,int id) {
+
+    public ProjectManager(String name, int id) {
         this.name = name;
-        this.id=id;
+        this.id = id;
         initComponents();
     }
 
@@ -44,7 +46,7 @@ public class ProjectManager extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(700, 400));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -56,9 +58,9 @@ public class ProjectManager extends javax.swing.JFrame {
         welcomeMsg.setText("Welcome "+name);
         welcomeMsg.setPreferredSize(new java.awt.Dimension(250, 32));
 
-        logOutBtn.setBackground(new java.awt.Color(204, 204, 255));
+        logOutBtn.setBackground(new java.awt.Color(255, 102, 0));
         logOutBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        logOutBtn.setForeground(new java.awt.Color(255, 51, 51));
+        logOutBtn.setForeground(new java.awt.Color(255, 255, 255));
         logOutBtn.setText("Log Out");
         logOutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -66,7 +68,7 @@ public class ProjectManager extends javax.swing.JFrame {
             }
         });
 
-        viewBugs.setBackground(new java.awt.Color(0, 0, 153));
+        viewBugs.setBackground(new java.awt.Color(255, 102, 0));
         viewBugs.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         viewBugs.setForeground(new java.awt.Color(255, 255, 255));
         viewBugs.setText("View All Bugs");
@@ -76,7 +78,7 @@ public class ProjectManager extends javax.swing.JFrame {
             }
         });
 
-        devPerform.setBackground(new java.awt.Color(0, 0, 153));
+        devPerform.setBackground(new java.awt.Color(255, 102, 0));
         devPerform.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         devPerform.setForeground(new java.awt.Color(255, 255, 255));
         devPerform.setText("View Developers Performance");
@@ -86,7 +88,7 @@ public class ProjectManager extends javax.swing.JFrame {
             }
         });
 
-        testPerform.setBackground(new java.awt.Color(0, 0, 153));
+        testPerform.setBackground(new java.awt.Color(255, 102, 0));
         testPerform.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         testPerform.setForeground(new java.awt.Color(255, 255, 255));
         testPerform.setText("View Testers Performance");
@@ -96,10 +98,15 @@ public class ProjectManager extends javax.swing.JFrame {
             }
         });
 
-        updateStatus.setBackground(new java.awt.Color(0, 0, 153));
+        updateStatus.setBackground(new java.awt.Color(255, 102, 0));
         updateStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         updateStatus.setForeground(new java.awt.Color(255, 255, 255));
         updateStatus.setText("Update Status");
+        updateStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateStatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,6 +205,17 @@ public class ProjectManager extends javax.swing.JFrame {
         });
         this.dispose();
     }//GEN-LAST:event_testPerformActionPerformed
+
+    private void updateStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStatusActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new UpdateBugStatus(name, id).setVisible(true);
+            }
+        });
+        this.dispose();
+    }//GEN-LAST:event_updateStatusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

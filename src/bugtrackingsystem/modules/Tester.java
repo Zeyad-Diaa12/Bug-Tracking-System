@@ -4,7 +4,9 @@
  */
 package bugtrackingsystem.modules;
 
+import bugtrackingsystem.forms.DefineBug;
 import bugtrackingsystem.forms.Login1;
+import bugtrackingsystem.forms.UpdateBugStatus;
 import bugtrackingsystem.tables.Bugs;
 
 /**
@@ -15,9 +17,10 @@ public class Tester extends javax.swing.JFrame {
 
     private final String name;
     private final int id;
-    public Tester(String name,int id) {
+
+    public Tester(String name, int id) {
         this.name = name;
-        this.id=id;
+        this.id = id;
         initComponents();
     }
 
@@ -41,7 +44,7 @@ public class Tester extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(700, 400));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -53,9 +56,9 @@ public class Tester extends javax.swing.JFrame {
         welcomeMsg.setText("Welcome "+name);
         welcomeMsg.setPreferredSize(new java.awt.Dimension(250, 32));
 
-        logOutBtn.setBackground(new java.awt.Color(204, 204, 255));
+        logOutBtn.setBackground(new java.awt.Color(255, 102, 0));
         logOutBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        logOutBtn.setForeground(new java.awt.Color(255, 51, 51));
+        logOutBtn.setForeground(new java.awt.Color(255, 255, 255));
         logOutBtn.setText("Log Out");
         logOutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -63,7 +66,7 @@ public class Tester extends javax.swing.JFrame {
             }
         });
 
-        viewBugs.setBackground(new java.awt.Color(0, 0, 153));
+        viewBugs.setBackground(new java.awt.Color(255, 102, 0));
         viewBugs.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         viewBugs.setForeground(new java.awt.Color(255, 255, 255));
         viewBugs.setText("View All Bugs");
@@ -73,7 +76,7 @@ public class Tester extends javax.swing.JFrame {
             }
         });
 
-        defineBug.setBackground(new java.awt.Color(0, 0, 153));
+        defineBug.setBackground(new java.awt.Color(255, 102, 0));
         defineBug.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         defineBug.setForeground(new java.awt.Color(255, 255, 255));
         defineBug.setText("Define Bug");
@@ -83,10 +86,15 @@ public class Tester extends javax.swing.JFrame {
             }
         });
 
-        updateStatus.setBackground(new java.awt.Color(0, 0, 153));
+        updateStatus.setBackground(new java.awt.Color(255, 102, 0));
         updateStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         updateStatus.setForeground(new java.awt.Color(255, 255, 255));
         updateStatus.setText("Update Status");
+        updateStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateStatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,10 +106,9 @@ public class Tester extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(defineBug, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(viewBugs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
+                    .addComponent(defineBug, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewBugs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(updateStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
                 .addComponent(logOutBtn)
                 .addContainerGap())
@@ -152,6 +159,7 @@ public class Tester extends javax.swing.JFrame {
     private void viewBugsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBugsActionPerformed
         // TODO add your handling code here:
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Bugs(id).setVisible(true);
             }
@@ -161,7 +169,25 @@ public class Tester extends javax.swing.JFrame {
 
     private void defineBugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defineBugActionPerformed
         // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new DefineBug(name, id).setVisible(true);
+            }
+        });
+        this.dispose();
     }//GEN-LAST:event_defineBugActionPerformed
+
+    private void updateStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStatusActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new UpdateBugStatus(name, id).setVisible(true);
+            }
+        });
+        this.dispose();
+    }//GEN-LAST:event_updateStatusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
