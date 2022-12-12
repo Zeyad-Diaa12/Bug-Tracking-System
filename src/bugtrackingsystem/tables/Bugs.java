@@ -14,7 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Bugs extends javax.swing.JFrame {
@@ -111,9 +110,9 @@ public class Bugs extends javax.swing.JFrame {
             table_.getColumnModel().getColumn(9).setPreferredWidth(10);
         }
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        backBtn.setBackground(new java.awt.Color(0, 102, 153));
+        backBtn.setBackground(new java.awt.Color(255, 102, 0));
         backBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
         backBtn.setText("Back");

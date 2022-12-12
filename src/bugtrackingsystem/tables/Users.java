@@ -56,7 +56,6 @@ public class Users extends javax.swing.JFrame {
         backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 502));
         setResizable(false);
 
         table_.setModel(new javax.swing.table.DefaultTableModel(
@@ -82,9 +81,9 @@ public class Users extends javax.swing.JFrame {
             table_.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        backBtn.setBackground(new java.awt.Color(0, 102, 153));
+        backBtn.setBackground(new java.awt.Color(255, 102, 0));
         backBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
         backBtn.setText("Back");
